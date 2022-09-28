@@ -30,4 +30,5 @@ return [
         'subcategories'=>'Subcategories',
         'brands'=>'Brands',
     ],
+    'change_filter'=>'Change filter',
 ];

@@ -24,6 +24,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    @yield('links_add')
 </head>
 <body>
     <div id="app">
@@ -38,11 +39,7 @@
                 </button>
 
                 <div class="collapse col navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav col-7 me-auto d-flex justify-content-end">
-                        <form style="width:70%; display:flex; justify-content: center" role="search">
-                            <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="{{ __('pagination.search') }}" aria-label="Search">
-                        </form>
-                    </ul>
+                    @yield('search')
                     <ul class="navbar-nav col-3 ms-auto">
                         <!-- Authentication Links -->
 
@@ -59,9 +56,16 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown d-flex flex-row-reverse align-items-center">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
+                                </a>
+
+                                <a class="nav-link basket animate_on_load_append_left" href="basket">
+                                    <video width="42" autoplay muted>
+                                        <source src="{{asset('images/shopping-cart.mp4')}}" type="video/mp4">
+
+                                    </video>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -77,6 +81,18 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item dropdown d-flex align-items-center">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span> {{ Config::get('languages')[App::getLocale()]['display'] }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @foreach (Config::get('languages') as $lang => $language)
+                                    @if ($lang != App::getLocale())
+                                        <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,6 +101,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
     <footer class="footer">
         <div class="container" style="min-height: auto !important;max-width: 1170px !important;

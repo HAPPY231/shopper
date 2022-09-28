@@ -7,6 +7,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Flag Icon CSS
+@import '~flag-icon-css/sass/flag-icons';
+
+#app{
+    min-height: 1200px;
+}
+
 .navbar-brand{
     width: 20%;
 }
@@ -18,7 +25,6 @@
 .sidebar-filter{
     z-index: 9997;
 }
-
 
 .category-children{
     width: 205px;
@@ -35,7 +41,6 @@ $category_additions_color: #e91e63;
 @mixin category-children{
     padding-left: 0.5rem;
     border-left: 0.2rem solid $category_additions_color;
-
 }
 
 .category-children:hover{
@@ -63,6 +68,33 @@ category-label:hover{
     border-bottom-color: $category_additions_color;
     transform: rotate(-90deg);
 }
+.animate_on_load{
+    animation: 1s ease-out 0s 1 append_after_load;
+}
+
+.animate_on_load_append_left{
+    animation: 1s ease-out 0s 1 append_from_left;
+}
+@keyframes append_after_load{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes append_from_left{
+    0% {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
 .category-children,.category_parent a{
     text-decoration: none;
     color: #191c1f;
@@ -166,7 +198,10 @@ category-label:hover{
 .footer-col .social-links img{
     width: 40px;
     height: 40px;
+}
 
+.card-img-top{
+    border: 1px solid #f3f3f3;
 }
 
 /*responsive*/
@@ -202,7 +237,6 @@ category-label:hover{
     justify-content: center;
 }
 .contact_form h2{
-
     margin-left: auto;
     margin-right: auto;
 }
@@ -212,4 +246,35 @@ category-label:hover{
 }
 .item img{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.card{
+    border: none;
+    overflow: hidden
+}
+.thumbnail_images ul{
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top:10px
+}
+.thumbnail_images ul li{
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #eee;
+    cursor: pointer;
+    transition: all 0.5s
+}
+.thumbnail_images ul li:hover{
+    border: 2px solid #000
+}
+.main_image{display: flex;justify-content: center;align-items: center;border-bottom: 1px solid #eee;height: 400px;width: 100%;overflow: hidden}.heart{height: 29px;width: 29px;background-color: #eaeaea;border-radius: 50%;display: flex;justify-content: center;align-items: center}.content p{font-size: 12px}.ratings span{font-size: 14px;margin-left: 12px}.colors{margin-top: 5px}.colors ul{list-style: none;display: flex;padding-left: 0px}.colors ul li{height: 20px;width: 20px;display: flex;border-radius: 50%;margin-right: 10px;cursor: pointer}.colors ul li:nth-child(1){background-color: #6c704d}.colors ul li:nth-child(2){background-color: #96918b}.colors ul li:nth-child(3){background-color: #68778e}.colors ul li:nth-child(4){background-color: #263f55}.colors ul li:nth-child(5){background-color: black}.right-side{position: relative}.search-option{position: absolute;background-color: #000;overflow: hidden;align-items: center;color: #fff;width: 200px;height: 200px;border-radius: 49% 51% 50% 50% / 68% 69% 31% 32%;left: 30%;bottom: -250px;transition: all 0.5s;cursor: pointer}.search-option .first-search{position: absolute;top: 20px;left: 90px;font-size: 20px;opacity: 1000}.search-option .inputs{opacity: 0;transition: all 0.5s ease;transition-delay: 0.5s;position: relative}.buttons .btn{height: 50px;width: 150px;border-radius: 0px !important}
+
+.heart{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.heart:hover{
+    transform: scale(0.9);
 }

@@ -19,8 +19,13 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/home', [HomeController::class, 'all_products']);
 Route::get('/', [HomeController::class, 'all_products']);
+Route::get('/categories/{category}', [HomeController::class, 'categories_pages']);
 Route::get('/product/{id}', [ProductController::class, 'index']);
 
 
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageSwitcher@switchLang']);
+
 Auth::routes();
 
+Route::get('/product/add/{id}', [ProductController::class, 'add'])->middleware('auth');

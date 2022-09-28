@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "autoprefixer": "10.4.5",
+        "bootstrap-icons": "^1.9.1",
+        "flag-icon-css": "^4.1.7",
         "sass": "^1.53.0"
     }
 }

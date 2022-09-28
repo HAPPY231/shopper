@@ -27,7 +27,7 @@ class AlterTableUsers extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             if (Schema::hasColumn('users', 'phone_number')) {
                 $table->dropColumn('phone_number');
             }

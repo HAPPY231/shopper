@@ -6,15 +6,14 @@ return [
     'sort_by' => [
         'sort_by'=>'Sortowanie',
         'relevance'=>'Trafność',
-        'price_Descending'=>'Cena od najniższej',
-        'price_Ascending'=>'Cena od najwyższej',
+        'price_Descending'=>'Cena od najwyższej',
+        'price_Ascending'=>'Cena od najniższej',
         'best_Selling'=>'Najlepiej sprzedające',
     ],
     'showing'=>'Pokazywanie',
     'products'=>'produktów',
     'categories'=>[
       'categories'=>'Kategorie',
-      'subcategories'=>'Podkategorie',
-      'brands'=>'Marki',
     ],
+    'change_filter'=>'Zmień filter',
 ];
